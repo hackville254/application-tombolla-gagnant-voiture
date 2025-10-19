@@ -1,0 +1,227 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participer à la Tombola – Toyota Yaris</title>
+
+    <!-- Google Fonts & Icons CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ffb300;
+            --secondary: #ff6f00;
+            --background: #0d0d0d;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --text: #f0f0f0;
+            --blur: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top left, #1a1a1a, #0b0b0b 70%);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 480px;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur));
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 179, 0, 0.4);
+        }
+
+        .header img {
+            width: 100%;
+            border-radius: 14px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.05em;
+            opacity: 0.85;
+        }
+
+        .price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        select {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1.5px solid var(--primary);
+            color: var(--text);
+            font-weight: 600;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding-right: 38px;
+            position: relative;
+        }
+
+        select:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 8px rgba(255, 111, 0, 0.4);
+        }
+
+        select option {
+            background: #222;
+            color: var(--primary);
+            font-weight: 500;
+            padding: 10px;
+        }
+
+        /* Custom arrow for select */
+        .form-group select {
+            background-image: url("data:image/svg+xml;utf8,<svg fill='orange' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 18px 18px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.95em;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1em;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(255, 179, 0, 0.4);
+            outline: none;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: #121212;
+            font-weight: 700;
+            padding: 14px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(255, 179, 0, 0.4);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 35px rgba(255, 179, 0, 0.6);
+        }
+
+        .trust {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9em;
+            color: #ccc;
+            opacity: 0.8;
+        }
+
+        .trust i {
+            color: var(--primary);
+            margin-right: 4px;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 25px 20px; }
+            .header h1 { font-size: 1.6em; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎟️ Participez à la Tombola Toyota Yaris</h1>
+            <img src="{% static 'images/image (5).jpg' %}" alt="Toyota Yaris">
+            <p>Pour seulement <span class="highlight">100 FCFA</span>, vous pouvez devenir propriétaire d'une <strong>Toyota Yaris 2002</strong> !</p>
+            <p class="price">Ticket : 100 FCFA</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.nom.label_tag }}
+                {{ form.nom }}
+            </div>
+            <div class="form-group">
+                {{ form.prenom.label_tag }}
+                {{ form.prenom }}
+            </div>
+            <div class="form-group">
+                {{ form.operateur.label_tag }}
+                {{ form.operateur }}
+            </div>
+            <div class="form-group">
+                {{ form.numero_telephone.label_tag }}
+                {{ form.numero_telephone }}
+            </div>
+            <button type="submit" class="btn">
+                <i class="bi bi-ticket-detailed"></i> Jouer Maintenant
+            </button>
+        </form>
+
+        <p class="trust"><i class="bi bi-shield-check"></i> Transaction 100% sécurisée – Tirage le <strong>31 décembre 2025</strong></p>
+    </div>
+</body>
+</html>

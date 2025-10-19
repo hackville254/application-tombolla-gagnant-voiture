@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation du paiement en cours</title>
+    <style>
+        body {
+            background: #181818;
+            color: #f1f1f1;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 80px auto;
+            background: #232323;
+            border-radius: 12px;
+            box-shadow: 0 0 24px #0006;
+            padding: 32px;
+            text-align: center;
+        }
+        .loader {
+            border: 6px solid #333;
+            border-top: 6px solid #ffcc00;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        .msg {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+        }
+        .info {
+            color: #ffcc00;
+            margin-top: 18px;
+        }
+        .btn-tickets {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 12px 28px;
+            background: #ffcc00;
+            color: #232323;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-tickets:hover {
+            background: #ffd633;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Confirmation du paiement</h2>
+        <div class="loader"></div>
+        <div class="msg">
+            Votre paiement est en cours de traitement.<br>
+            Merci de patienter quelques instants...
+        </div>
+        <div class="info">
+            Vous recevrez une confirmation dès que le paiement sera validé.<br>
+            Ne fermez pas cette page.
+        </div>
+        <a href="{% url 'view_tickets' %}" class="btn-tickets">Voir mes tickets</a>
+    </div>
+</body>
+</html>

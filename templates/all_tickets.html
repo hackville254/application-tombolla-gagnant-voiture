@@ -1,0 +1,160 @@
+<!-- Responsive version for mobile -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Tickets Tombola</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at 20% 10%, #1a1a1a, #0a0a0a 80%);
+            color: #f1f1f1;
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        }
+        h1 {
+            color: #ffb300;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        form {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #ffb300;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.07);
+            color: #f1f1f1;
+            font-size: 1rem;
+        }
+        button[type="submit"] {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            background: linear-gradient(90deg, #ffb300, #ff6f00);
+            color: #232323;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .ticket-card {
+            background: #181818;
+            border-radius: 14px;
+            border: 2px dashed #ffb300;
+            padding: 16px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .ticket-card p {
+            font-size: 0.9rem;
+            margin: 6px 0;
+        }
+        .download-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                max-width: 100%;
+            }
+        }
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .ticket-card p {
+                font-size: 1rem;
+            }
+            button[type="submit"] {
+                font-size: 1.1rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 800px;
+            }
+            .ticket-card {
+                padding: 20px;
+            }
+            .ticket-card {
+                padding: 14px;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fa-solid fa-ticket"></i> Mes Tickets Tombola</h1>
+        <form method="post" action="{% url 'view_tickets' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"><i class="fa-solid fa-search"></i> Voir mes tickets</button>
+        </form>
+        <div class="tickets-list">
+            {% if tickets %}
+                {% for ticket in tickets %}
+                    <div class="ticket-card" id="ticket-{{ forloop.counter }}">
+                        <p><strong>Nom :</strong> {{ ticket.nom }}</p>
+                        <p><strong>Prénom :</strong> {{ ticket.prenom }}</p>
+                        <p><strong>Opérateur :</strong> {{ ticket.operateur }}</p>
+                        <p><strong>Téléphone :</strong> {{ ticket.numero_telephone }}</p>
+                        <p><strong>Numéro du Ticket :</strong> <span style="word-break: break-all;">{{ ticket.numero_ticket }}</span></p>
+                        <p><strong>Payé :</strong> {% if ticket.paye %}<span style="color:#7fff7f;">Oui</span>{% else %}<span style="color:#ff6f00;">Non</span>{% endif %}</p>
+                        <button class="download-btn" onclick="downloadTicket('ticket-{{ forloop.counter }}')">
+                            <i class="fa-solid fa-download"></i> Télécharger
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        function downloadTicket(ticketId) {
+            const ticket = document.getElementById(ticketId);
+            html2canvas(ticket, {
+                scale: 3,
+                backgroundColor: '#141420',
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = ticketId + '.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>

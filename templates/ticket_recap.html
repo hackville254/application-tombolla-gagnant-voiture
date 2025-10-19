@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🎟️ Votre Ticket Tombola</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --secondary: #007bff;
+      --bg-dark: #0a0a0f;
+      --glass-bg: rgba(20, 20, 30, 0.95);
+      --text-light: #fff;
+      --border-light: rgba(255, 255, 255, 0.1);
+      --accent: #ffcc80;
+      --success: #00e676;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      color: var(--text-light);
+    }
+
+    .container {
+      position: relative;
+      max-width: 500px;
+      background: var(--glass-bg);
+      border-radius: 20px;
+      padding: 35px 30px;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.1), transparent 60%);
+      animation: pulse 6s infinite linear;
+    }
+
+    @keyframes pulse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .header-icon {
+      font-size: 60px;
+      color: var(--success);
+      margin-bottom: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    h2 {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      color: #ccc;
+      font-size: 0.95em;
+      margin-bottom: 20px;
+    }
+
+    .ticket-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .ticket-logo i {
+      color: var(--primary);
+      font-size: 22px;
+    }
+
+    .ticket-logo span {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .ticket {
+      background: linear-gradient(145deg, #141420, #1e1e2f);
+      border: 2px dashed rgba(0, 212, 255, 0.6);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px 0;
+      text-align: left;
+      font-size: 0.95em;
+      box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.3);
+      transition: transform 0.2s;
+      word-wrap: break-word;        /* permet de gérer le UUID long */
+      overflow-wrap: break-word;    /* assure le wrapping */
+    }
+
+    .ticket:hover { transform: scale(1.02); }
+
+    .ticket p {
+      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      color: #ddd;
+    }
+
+    .ticket strong { color: var(--accent); font-weight: 500; }
+
+    .btn-download {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      margin-top: 10px;
+    }
+
+    .btn-download:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+    }
+
+    .celebration {
+      margin-top: 20px;
+      color: var(--primary);
+      font-size: 0.95em;
+      font-weight: 500;
+      line-height: 1.6em;
+    }
+
+    /* Confetti Animation */
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall 4s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="ticket-logo">
+      <i class="fa-solid fa-car"></i>
+      <span>TOMBOLA VOITURE</span>
+    </div>
+
+    <i class="fa-solid fa-circle-check header-icon"></i>
+    <h2>Félicitations 🎉</h2>
+    <p class="subtitle">Votre ticket de tombola a été généré avec succès.</p>
+
+    <div class="ticket" id="ticket">
+      <p><strong>Nom :</strong> <span>{{ ticket.nom }}</span></p>
+      <p><strong>Prénom :</strong> <span>{{ ticket.prenom }}</span></p>
+      <p><strong>Opérateur :</strong> <span>{{ ticket.operateur }}</span></p>
+      <p><strong>Téléphone :</strong> <span>{{ ticket.numero_telephone }}</span></p>
+      <p><strong>Numéro du Ticket :</strong> <span style="word-break: break-all;">{{ ticket.numero_ticket }}</span></p>
+      <p><strong>Prix :</strong> <span>100 FCFA</span></p>
+      <p><strong>Date d'achat :</strong> <span>{{ ticket.date_achat }}</span></p>
+    </div>
+
+    <button class="btn-download" onclick="downloadTicket()">
+      <i class="fa-solid fa-download"></i> Télécharger mon ticket
+    </button>
+
+    <p class="celebration">
+      🎁 Tirage au sort prévu le <strong>31 décembre 2025</strong> à minuit.<br>
+      Gardez précieusement ce ticket, il pourrait bien changer votre vie.
+    </p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    function downloadTicket() {
+      const ticket = document.getElementById('ticket');
+      html2canvas(ticket, {
+        scale: 3,
+        backgroundColor: '#141420',
+        useCORS: true
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'ticket_tombola.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+
+    // Confetti 🎊
+    for (let i = 0; i < 25; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 60%)`;
+      confetti.style.animationDuration = 3 + Math.random()*3 + 's';
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 6000);
+    }
+  </script>
+</body>
+</html>

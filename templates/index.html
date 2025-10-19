@@ -1,0 +1,306 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tombola Toyota Yaris – Gagnez une voiture pour 100 FCFA</title>
+
+  <!-- 🔗 Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --primary: #ffb300;
+      --secondary: #ff6f00;
+      --accent: #00ffcc;
+      --bg-dark: #0f0f0f;
+      --glass-bg: rgba(255, 255, 255, 0.07);
+      --text: #f1f1f1;
+      --blur: 18px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 10%, #1a1a1a, #0a0a0a 80%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    header {
+      backdrop-filter: blur(var(--blur));
+      background: rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 1.8em;
+      text-shadow: 0 0 15px rgba(255, 179, 0, 0.4);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(135deg, rgba(255, 111, 0, 0.1), rgba(255, 255, 255, 0.05));
+    }
+
+    .hero h2 {
+      color: var(--primary);
+      font-size: 2.8em;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--primary); }
+      to { text-shadow: 0 0 25px var(--secondary); }
+    }
+
+    .hero p {
+      color: #ddd;
+      font-size: 1.2em;
+      margin-top: 20px;
+      line-height: 1.6em;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      color: #111;
+      font-weight: bold;
+      border-radius: 50px;
+      padding: 14px 36px;
+      font-size: 1.2em;
+      margin-top: 30px;
+      box-shadow: 0 8px 20px rgba(0, 255, 204, 0.2);
+      transition: all 0.3s ease;
+      animation: pulse 2.5s infinite;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 255, 204, 0.4);
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 10px var(--accent); }
+      50% { box-shadow: 0 0 25px var(--accent); }
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--blur));
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 30px;
+      margin: 50px auto;
+      max-width: 1000px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-card h3 {
+      color: var(--primary);
+      font-size: 1.6em;
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      text-align: center;
+      background: var(--glass-bg);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      margin: 30px auto;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .timer {
+      display: flex;
+      justify-content: space-around;
+      font-size: 1.6em;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .timer div span {
+      display: block;
+      font-size: 0.7em;
+      color: #aaa;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      border-radius: 12px;
+      width: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    iframe {
+      width: 100%;
+      height: 420px;
+      border-radius: 20px;
+      margin-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9em;
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 2em; }
+      .timer { font-size: 1.2em; }
+      iframe { height: 250px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🎉 Tombola Toyota Yaris – Changez votre vie pour 100 FCFA 🎉</h1>
+  </header>
+
+  <section class="hero" data-aos="fade-up">
+    <h2>🚗 Gagnez une Toyota Yaris pour seulement 100 FCFA !</h2>
+    <p>Chaque ticket est une chance réelle de repartir au volant de cette superbe Toyota Yaris.  
+    Tirage au sort le <strong>14 janvier 2026</strong> à 14h00 ⏰.</p>
+    <a href="{% url 'jouer' %}" class="btn"><i class="fa-solid fa-ticket mr-2"></i> Je participe maintenant 🚀</a>
+  </section>
+
+    <div class="countdown glass-card border-2 border-red-500 shadow-lg animate-pulse" data-aos="fade-up">
+        <h3 class="text-red-500">⏰ Attention ! Le tirage approche à grands pas :</h3>
+        <div class="timer" id="countdown">
+            <div>00<span>Jours</span></div>
+            <div>00<span>Heures</span></div>
+            <div>00<span>Minutes</span></div>
+            <div>00<span>Secondes</span></div>
+        </div>
+        <p class="mt-4 text-red-400 font-bold italic">⚡ Dépêchez-vous, les tickets partent vite et le temps file !</p>
+        <p class="mt-2 text-yellow-400 font-semibold">Ne ratez pas votre chance, agissez maintenant !</p>
+    </div>
+
+  <section class="glass-card" data-aos="zoom-in">
+    <img src="{% static 'images/image (5).jpg' %}" alt="Toyota Yaris" class="rounded-xl w-full mb-4">
+    <h3>⚙️ Caractéristiques de la voiture</h3>
+    <ul class="space-y-2 text-lg">
+      <li><i class="fa-solid fa-car text-yellow-400 mr-2"></i> Modèle : Toyota Yaris 2002</li>
+      <li><i class="fa-solid fa-gas-pump text-teal-400 mr-2"></i> Carburant : Essence</li>
+      <li><i class="fa-solid fa-bolt text-orange-400 mr-2"></i> Moteur : VVTI</li>
+      <li><i class="fa-solid fa-road text-green-400 mr-2"></i> Bon kilométrage</li>
+    </ul>
+  </section>
+
+  <section class="glass-card" data-aos="fade-up">
+    <h3>🎥 Découvrez la voiture en vidéo</h3>
+    <iframe src="https://www.youtube.com/embed/obtHFmveuqs?rel=0" allowfullscreen></iframe>
+  </section>
+
+  <section class="glass-card" data-aos="fade-up">
+    <h3>📸 Galerie du véhicule</h3>
+    <div class="gallery">
+      <img src="{% static 'images/image (1).jpg' %}" alt="Vue avant">
+      <img src="{% static 'images/image (2).jpg' %}" alt="Vue arrière">
+      <img src="{% static 'images/image (3).jpg' %}" alt="Intérieur">
+      <img src="{% static 'images/image (4).jpg' %}" alt="Côté">
+      <img src="{% static 'images/image (6).jpg' %}" alt="Panneau">
+      <img src="{% static 'images/image (7).jpg' %}" alt="Roues">
+    </div>
+  </section>
+
+<section class="glass-card text-center" data-aos="zoom-in">
+    <h3>💡 Comment ça marche ?</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-8 mt-6">
+        <div class="flex flex-col items-center">
+            <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mb-2 animate-bounce">1️⃣</div>
+            <p class="text-lg text-gray-300">Achetez un ticket à <span class="font-bold text-yellow-400">100 FCFA</span>.</p>
+        </div>
+        <div class="flex flex-col items-center">
+            <div class="bg-teal-400 text-black rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mb-2 animate-bounce delay-200">2️⃣</div>
+            <p class="text-lg text-gray-300">Chaque ticket = <span class="font-bold text-teal-400">1 chance</span> au tirage.</p>
+        </div>
+        <div class="flex flex-col items-center">
+            <div class="bg-orange-400 text-black rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mb-2 animate-bounce delay-400">3️⃣</div>
+            <p class="text-lg text-gray-300">Tirage <span class="font-bold text-orange-400">public & transparent</span> le <span class="underline">14 janvier 2026</span>.</p>
+        </div>
+        <div class="flex flex-col items-center">
+            <div class="bg-green-400 text-black rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mb-2 animate-bounce delay-600">4️⃣</div>
+            <p class="text-lg text-gray-300">Le gagnant repart avec la <span class="font-bold text-green-400">Toyota Yaris</span>, <span class="italic">aucun frais caché</span> !</p>
+        </div>
+    </div>
+    <div class="mt-8">
+        <span class="inline-block px-6 py-3 bg-gradient-to-r from-yellow-400 via-teal-400 to-orange-400 text-black font-bold rounded-full shadow-lg animate-pulse">
+            🎉 Tentez votre chance, c’est simple et fun !
+        </span>
+    </div>
+</section>
+
+  <section class="text-center my-20" data-aos="zoom-in">
+    <p class="text-xl font-semibold text-yellow-400 mb-6">🔥 Plus de 80% des tickets déjà réservés !</p>
+    <a href="{% url 'jouer' %}" class="btn"><i class="fa-solid fa-bolt mr-2"></i> Tentez votre chance maintenant 💥</a>
+  </section>
+
+  <footer>
+    © 2025 Tombola Auto – Une opportunité honnête, transparente et excitante ✨
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const targetDate = new Date("Jan 14, 2026 14:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdown.innerHTML = "<div class='w-full text-center'>🎊 Tirage en cours !</div>";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `
+        <div>${days}<span>Jours</span></div>
+        <div>${hours}<span>Heures</span></div>
+        <div>${minutes}<span>Minutes</span></div>
+        <div>${seconds}<span>Secondes</span></div>
+      `;
+    }, 1000);
+  </script>
+</body>
+</html>

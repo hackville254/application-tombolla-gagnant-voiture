@@ -1,0 +1,66 @@
+# .gitignore pour une application Django
+
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environnements virtuels
+env/
+venv/
+ENV/
+.venv/
+.env/
+
+# Fichiers de configuration locaux / secrets
+local_settings.py
+*.env
+.env.local
+
+# Bases de données locales
+db.sqlite3
+db.sqlite3-journal
+
+# Fichiers médias et statiques générés
+media/
+staticfiles/
+static_root/
+collectstatic/
+# (ne pas ignorer les dossiers static des apps si vous les versionnez explicitement)
+
+# Logs, reports et sessions
+*.log
+*.pid
+*.sock
+coverage.xml
+htmlcov/
+.coverage
+nosetests.xml
+
+# Outils de test / build
+.pytest_cache/
+.tox/
+pip-wheel-metadata/
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# IDEs et éditeurs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.iml
+
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+*db
+.db
+# Python tooling
+.python-version
