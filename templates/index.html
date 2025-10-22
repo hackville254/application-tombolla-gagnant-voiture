@@ -5,6 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tombola Toyota Yaris – Gagnez une voiture pour 100 FCFA</title>
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Participez à la tombola Toyota Yaris 2002 pour seulement 100 FCFA. Tirage public le 31 janvier 2026 à 14h00. Gagnez une voiture sans frais cachés.">
+  <meta name="keywords" content="tombola, Toyota Yaris, 100 FCFA, gagner voiture, tirage au sort, tkymototor, Cameroun">
+  <meta name="author" content="Tombola Auto">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tkymototor.cm/">
+  <meta property="og:title" content="Tombola Toyota Yaris – Gagnez une voiture pour 100 FCFA">
+  <meta property="og:description" content="Chaque ticket à 100 FCFA est une chance de remporter une Toyota Yaris 2002. Tirage transparent le 31 janvier 2026.">
+  <meta property="og:image" content="https://tkymototor.cm{% static 'images/image (5).jpg' %}">
+  <meta property="og:image:alt" content="Toyota Yaris 2002 en jeu">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://tkymototor.cm/">
+  <meta property="twitter:title" content="Tombola Toyota Yaris – 100 FCFA seulement">
+  <meta property="twitter:description" content="Tentez votre chance de gagner une Toyota Yaris 2002 pour 100 FCFA. Tirage le 31 janvier 2026.">
+  <meta property="twitter:image" content="https://tkymototor.cm{% static 'images/image (5).jpg' %}">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://tkymototor.cm/">
 
   <!-- 🔗 Google Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -193,7 +216,7 @@
   <section class="hero" data-aos="fade-up">
     <h2>🚗 Gagnez une Toyota Yaris pour seulement 100 FCFA !</h2>
     <p>Chaque ticket est une chance réelle de repartir au volant de cette superbe Toyota Yaris.  
-    Tirage au sort le <strong>14 janvier 2026</strong> à 14h00 ⏰.</p>
+    Tirage au sort le <strong>31 janvier 2026</strong> à 14h00 ⏰.</p>
     <a href="{% url 'jouer' %}" class="btn"><i class="fa-solid fa-ticket mr-2"></i> Je participe maintenant 🚀</a>
   </section>
 
@@ -250,7 +273,7 @@
         </div>
         <div class="flex flex-col items-center">
             <div class="bg-orange-400 text-black rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mb-2 animate-bounce delay-400">3️⃣</div>
-            <p class="text-lg text-gray-300">Tirage <span class="font-bold text-orange-400">public & transparent</span> le <span class="underline">14 janvier 2026</span>.</p>
+            <p class="text-lg text-gray-300">Tirage <span class="font-bold text-orange-400">public & transparent</span> le <span class="underline">31 janvier 2026</span>.</p>
         </div>
         <div class="flex flex-col items-center">
             <div class="bg-green-400 text-black rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mb-2 animate-bounce delay-600">4️⃣</div>
@@ -277,7 +300,7 @@
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    const targetDate = new Date("Jan 14, 2026 14:00:00").getTime();
+    const targetDate = new Date("Jan 31, 2026 14:00:00").getTime();
     const countdown = document.getElementById("countdown");
 
     setInterval(() => {
