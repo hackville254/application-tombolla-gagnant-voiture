@@ -1,4 +1,10 @@
 from django.contrib import admin
 from .models import Ticket
 # Register your models here.
-admin.site.register(Ticket)  # Add your models inside the parentheses
+# Personnalisation de l’administration des tickets de tombola
+@admin.register(Ticket)
+class TicketAdmin(admin.ModelAdmin):
+    list_display = ('numero_ticket', 'nom', 'prenom', 'operateur', 'numero_telephone', 'paye', 'date_achat')
+    list_filter = ('paye', 'operateur', 'date_achat')
+    search_fields = ('numero_ticket', 'nom', 'prenom', 'numero_telephone')
+    ordering = ('-date_achat',)
