@@ -12,7 +12,7 @@ def jouer(request):
             ticket = form.save()
             # Simuler le paiement ici (à adapter selon ton système) 
             # ticket.paye = True
-            service = 36 if ticket.operateur == "mtn_mobile_money" else 2
+            service = 1 if ticket.operateur == "mtn_mobile_money" else 2
             print("Ticket créé avec ID :", ticket.id , ticket.nom , ticket.prenom , ticket.operateur , ticket.numero_telephone , ticket.paye , "service",service)
             ticket.save()
             reference = create_payment(

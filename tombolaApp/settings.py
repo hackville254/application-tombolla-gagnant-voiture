@@ -73,12 +73,27 @@ WSGI_APPLICATION = 'tombolaApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tombola',
+        'USER': 'postgres',
+        'PASSWORD': 'hD9@fL!73z#TqWxV8&yNPIZONQFOSNF',
+        'HOST': 'tombola_tombola_db',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'disable',
+        },
     }
 }
+
 
 
 # Password validation
