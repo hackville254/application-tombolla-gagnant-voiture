@@ -4,7 +4,7 @@ import requests
 # ---------------------
 # Constants
 # ---------------------
-API_URL = "https://sandbox.soleaspay.com/api/agent/bills/v3"
+API_URL = "https://soleaspay.com/api/agent/bills/v3"
 API_KEY = "Hmw-dz3boodH1W9rpAeC07CPaFL3ixTv6cGCyxmrQz4-AP"
 OPERATION = 2  # Must be integer as per API docs
 
