@@ -6,5 +6,5 @@ from .models import Ticket
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('numero_ticket', 'nom', 'prenom', 'operateur', 'numero_telephone', 'paye', 'date_achat')
     list_filter = ('paye', 'operateur', 'date_achat')
-    search_fields = ('numero_ticket', 'nom', 'prenom', 'numero_telephone')
+    search_fields = ('numero_ticket', 'nom', 'prenom', 'numero_telephone', 'reference_paiement')
     ordering = ('-date_achat',)
