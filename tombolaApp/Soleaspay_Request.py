@@ -5,7 +5,7 @@ import requests
 # Constants
 # ---------------------
 API_URL = "https://sandbox.soleaspay.com/api/agent/bills/v3"
-API_KEY = "SP__axXXDS1o669l2W69ofXPKWQDGpOlvGmHO4DLzc8da8_AK"
+API_KEY = "Hmw-dz3boodH1W9rpAeC07CPaFL3ixTv6cGCyxmrQz4-AP"
 OPERATION = 2  # Must be integer as per API docs
 
 # ---------------------
@@ -68,6 +68,7 @@ def create_payment(
     # Parse JSON safely
     try:
         data = response.json()
+        print('data:', data)
         reference = data.get('data', {}).get('reference', None)
         return reference
     except ValueError:
@@ -80,18 +81,18 @@ def create_payment(
 # ---------------------
 # Main execution "987654322", "987654320", "987654321"
 # ---------------------
-if __name__ == "__main__":
-    wallets = ["987654322", "987654320", "987654321"]
-    for wallet in wallets:
-        response = create_payment(
-            wallet=wallet,
-            amount=1000,
-            order_id=str(uuid.uuid4()),
-            description="Test payment",
-            payer="John Doe",
-            payer_email="john.doe@example.com",
-            success_url="https://example.com/success",
-            failure_url="https://example.com/failure",
-            service=36
-        )
-        print(f"\nResponse for wallet {wallet}:\n{response}")
+# if __name__ == "__main__":
+#     wallets = ["987654322", "987654320", "987654321"]
+#     for wallet in wallets:
+#         response = create_payment(
+#             wallet=wallet,
+#             amount=1000,
+#             order_id=str(uuid.uuid4()),
+#             description="Test payment",
+#             payer="John Doe",
+#             payer_email="john.doe@example.com",
+#             success_url="https://example.com/success",
+#             failure_url="https://example.com/failure",
+#             service=36
+#         )
+#         print(f"\nResponse for wallet {wallet}:\n{response}")

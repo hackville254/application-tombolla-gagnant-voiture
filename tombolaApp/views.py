@@ -25,7 +25,8 @@ def jouer(request):
                 success_url="https://example.com/success",
                 failure_url="https://example.com/failure",
                 service= service
-            )
+            ) 
+            print(reference , ticket.id)
             ticket.reference_paiement = reference
             ticket.save()
             return render(request, 'pending_payment.html', {'ticket': ticket})
