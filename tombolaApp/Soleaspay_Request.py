@@ -56,7 +56,7 @@ def create_payment(
     }
     print('payload:', payload)
     try:
-        response = requests.post(API_URL, json=payload, headers=headers, timeout=15)
+        response = requests.post(API_URL, json=payload, headers=headers, timeout=30)
     except requests.RequestException as e:
         return {"error": f"Request failed: {str(e)}"}
 
