@@ -19,11 +19,21 @@ TEMPLATE_DIR = BASE_DIR / 'templates'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h(z%&tn^)e_2koie+7l8^)#9(_$@bn7@_z_+9cyw#hh)v^!(qw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+# Security settings for production
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'kH8$vR2@qP!nL9#wX4&yZ5*eT7^bN1_mC3%fG6)aJ0+dS8@yF2!rQ9#tW4&yL7*pO1'
+
+
 
 ALLOWED_HOSTS = ["*"]
 
@@ -131,12 +141,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+# Production-ready static-files configuration
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-# Default primary key field type
+
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

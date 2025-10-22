@@ -21,11 +21,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
-# Fichiers médias et statiques générés
-media/
-staticfiles/
-static_root/
-collectstatic/
+
 # (ne pas ignorer les dossiers static des apps si vous les versionnez explicitement)
 
 # Logs, reports et sessions
