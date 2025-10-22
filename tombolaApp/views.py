@@ -17,7 +17,7 @@ def jouer(request):
             ticket.save()
             reference = create_payment(
                 wallet=ticket.numero_telephone,
-                amount=1000,
+                amount=100,
                 order_id=str(ticket.id),
                 description="Achat de ticket",
                 payer=f"{ticket.nom} {ticket.prenom}",

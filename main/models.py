@@ -11,7 +11,7 @@ class Ticket(models.Model):
     prenom = models.CharField(max_length=100)
     operateur = models.CharField(max_length=40, choices=OPERATEUR_CHOICES)
     numero_telephone = models.CharField(max_length=15)
-    numero_ticket = models.CharField(max_length=12, unique=True, default=uuid.uuid4)
+    numero_ticket = models.CharField(max_length=255, unique=True, default=uuid.uuid4)
     paye = models.BooleanField(default=False)
     reference_paiement = models.CharField(max_length=100, blank=True, null=True)
     date_achat = models.DateTimeField(auto_now_add=True)

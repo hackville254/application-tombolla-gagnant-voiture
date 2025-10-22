@@ -27,16 +27,36 @@ SECRET_KEY = 'kH8$vR2@qP!nL9#wX4&yZ5*eT7^bN1_mC3%fG6)aJ0+dS8@yF2!rQ9#tW4&yL7*pO1
 
 # Security settings for production
 ALLOWED_HOSTS = ['*']
-# SECURITY WARNING: keep the secret key used in production secret!
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-SECURE_HSTS_SECONDS = 3600  # Set the desired value in seconds
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
 
-
+if DEBUG == False:
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_HSTS_SECONDS = 3600  # Set the desired value in seconds
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'tombola',
+            'USER': 'postgres',
+            'PASSWORD': 'hD9@fL!73z#TqWxV8&yNPIZONQFOSNF',
+            'HOST': 'tombola_tombola_db',
+            'PORT': '5432',
+            'OPTIONS': {
+                'sslmode': 'disable',
+            },
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 
@@ -87,26 +107,9 @@ WSGI_APPLICATION = 'tombolaApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tombola',
-        'USER': 'postgres',
-        'PASSWORD': 'hD9@fL!73z#TqWxV8&yNPIZONQFOSNF',
-        'HOST': 'tombola_tombola_db',
-        'PORT': '5432',
-        'OPTIONS': {
-            'sslmode': 'disable',
-        },
-    }
-}
+
+
 
 
 
