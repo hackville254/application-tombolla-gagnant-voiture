@@ -22,20 +22,22 @@ TEMPLATE_DIR = BASE_DIR / 'templates'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'kH8$vR2@qP!nL9#wX4&yZ5*eT7^bN1_mC3%fG6)aJ0+dS8@yF2!rQ9#tW4&yL7*pO1'
 
 # Security settings for production
-SECURE_HSTS_SECONDS = 31536000  # 1 year
+ALLOWED_HOSTS = ['*']
+# SECURITY WARNING: keep the secret key used in production secret!
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_HSTS_SECONDS = 3600  # Set the desired value in seconds
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kH8$vR2@qP!nL9#wX4&yZ5*eT7^bN1_mC3%fG6)aJ0+dS8@yF2!rQ9#tW4&yL7*pO1'
 
 
 
-ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

@@ -19,7 +19,7 @@ from django.urls import path
 from .views import all_tickets, index, jouer , callback_soleaspay
 
 urlpatterns = [
-    path('admin/franck/tombola/', admin.site.urls),
+    path('admin/franck/tombola/', admin.site.urls), 
     path('', index, name='home'),
     path('jouer/', jouer, name='jouer'),
     path('tickets/', all_tickets, name='view_tickets'),
