@@ -63,7 +63,7 @@ import json
 import hashlib
 
 # Secret partagé avec Soleaspay
-SOLEASPAY_SECRET = "WB_6SMdRVmf0R09Poql1Ksjbh_K2CEtnxUF5YZZcrjuesU"
+SOLEASPAY_SECRET = "fz4t6JkAzZROFg6ekSyh-IDWSgp1d17fAK7HPCUB0zg"
 
 @csrf_exempt
 def callback_soleaspay(request):
